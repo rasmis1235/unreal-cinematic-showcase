@@ -37,6 +37,36 @@
 
     --radius: 0.5rem;
   }
+
+  html.light-mode {
+    --background: 0 0% 98%;
+    --foreground: 220 10% 6%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 10% 6%;
+
+    --popover: 0 0% 98%;
+    --popover-foreground: 220 10% 6%;
+
+    --primary: 195 85% 45%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 175 85% 38%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 10% 93%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 175 85% 38%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 10% 85%;
+    --input: 220 10% 85%;
+    --ring: 195 85% 45%;
+  }
 }
 
 @layer base {
@@ -49,11 +79,17 @@
   }
   
   body {
-    @apply bg-ue-dark text-foreground font-sans;
+    @apply bg-ue-dark text-foreground font-sans transition-colors duration-300;
     background-image: 
-      radial-gradient(circle at 100% 5%, rgba(33, 150, 243, 0.05) 0%, transparent 25%),
-      radial-gradient(circle at 5% 70%, rgba(3, 218, 198, 0.05) 0%, transparent 25%);
+      radial-gradient(circle at 100% 5%, rgba(33, 150, 243, 0.08) 0%, transparent 30%),
+      radial-gradient(circle at 5% 70%, rgba(3, 218, 198, 0.08) 0%, transparent 30%);
     background-attachment: fixed;
+  }
+
+  html.light-mode body {
+    background-image: 
+      radial-gradient(circle at 100% 5%, rgba(33, 150, 243, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 5% 70%, rgba(3, 218, 198, 0.05) 0%, transparent 40%);
   }
 }
 
@@ -67,6 +103,11 @@
     transform: translateZ(0);
     transition: transform 1s cubic-bezier(0.33, 1, 0.68, 1);
   }
+
+  .parallax-faster {
+    transform: translateZ(0);
+    transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+  }
   
   .clip-text {
     -webkit-background-clip: text;
@@ -75,18 +116,129 @@
   }
   
   .glass {
-    @apply backdrop-blur-lg bg-white/5 border border-white/10;
+    @apply backdrop-blur-lg bg-black/30 border border-white/10 shadow-lg;
+  }
+
+  .glass-navbar {
+    @apply backdrop-blur-xl bg-black/40 border-b border-white/10;
+  }
+
+  html.light-mode .glass-navbar {
+    @apply backdrop-blur-xl bg-white/80 border-b border-black/5 shadow-sm;
   }
   
   .section-fade {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.8s ease, transform 0.8s ease;
   }
   
   .section-fade.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .shadow-neon {
+    box-shadow: 0 0 15px 0 rgba(3, 218, 198, 0.3);
+  }
+
+  .shadow-neon-hover {
+    box-shadow: 0 0 25px 5px rgba(3, 218, 198, 0.4);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, theme('colors.ue.blue'), theme('colors.ue.teal'));
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes float-medium {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes float-fast {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 8s infinite ease-in-out;
+  }
+
+  .animate-float-medium {
+    animation: float-medium 5s infinite ease-in-out;
+  }
+
+  .animate-float-fast {
+    animation: float-fast 3s infinite ease-in-out;
+  }
+
+  .project-card {
+    @apply transition-all duration-500;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 0 15px -2px rgba(3, 218, 198, 0.15);
+  }
+
+  .project-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, theme('colors.ue.blue'), theme('colors.ue.teal'));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+    margin: -2px;
+  }
+
+  .project-card:hover::after {
+    opacity: 0.7;
+  }
+
+  .modal-overlay {
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .modal-content {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .modal-overlay.open .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-solo {
+    @apply bg-ue-blue/20 text-ue-blue;
+  }
+
+  .badge-team {
+    @apply bg-ue-teal/20 text-ue-teal;
   }
 }
 

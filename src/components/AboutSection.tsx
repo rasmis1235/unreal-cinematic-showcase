@@ -32,30 +32,42 @@ const AboutSection = () => {
       className="py-20 bg-ue-darker relative section-fade"
       ref={sectionRef}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,_rgba(3,218,198,0.07)_0%,_transparent_50%)] opacity-50"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,_rgba(3,218,198,0.1)_0%,_transparent_50%)] opacity-70"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* About Image */}
           <div className="relative order-2 lg:order-1">
             <div className="aspect-square max-w-md mx-auto relative">
-              {/* Main image with border */}
-              <div className="absolute inset-4 border-2 border-ue-teal rounded-lg"></div>
+              {/* Stylized border */}
+              <div className="absolute inset-4 border-2 border-ue-teal/50 rounded-lg"></div>
               
-              {/* Placeholder for profile image */}
-              <div className="absolute inset-0 translate-x-4 translate-y-4 bg-muted rounded-lg overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-ue-dark to-ue-darker flex items-center justify-center">
-                  <span className="text-muted-foreground">Profile Image</span>
+              {/* Main image with glow effect */}
+              <div className="absolute inset-0 translate-x-4 translate-y-4 rounded-lg overflow-hidden shadow-xl">
+                <div className="absolute inset-0 bg-gradient-to-tr from-ue-blue/20 to-ue-teal/20 mix-blend-overlay z-10"></div>
+                <img 
+                  src="/profile.jpg" 
+                  alt="Rasmi Ranjan Sahoo" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              
+              {/* Floating badges */}
+              <div className="absolute -top-6 -right-6 p-3 rounded-lg bg-gradient-to-br from-ue-blue to-ue-teal shadow-neon">
+                <div className="w-full h-full rounded bg-card flex items-center justify-center p-2">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold">5+</div>
+                    <div className="text-xs text-muted-foreground">Years UE Experience</div>
+                  </div>
                 </div>
               </div>
               
-              {/* Experience badge */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 rounded-lg bg-gradient-to-br from-ue-blue to-ue-teal p-0.5">
-                <div className="w-full h-full rounded-[7px] bg-ue-darker flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold">5+</div>
-                    <div className="text-sm text-muted-foreground">Years Experience</div>
-                  </div>
+              <div className="absolute -bottom-4 -left-4 p-2 rounded-lg bg-card/80 backdrop-blur-sm border border-white/10">
+                <div className="flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-ue-teal">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                  </svg>
+                  <span className="text-sm">UE5 Certified Developer</span>
                 </div>
               </div>
             </div>
@@ -65,51 +77,64 @@ const AboutSection = () => {
           <div className="space-y-6 order-1 lg:order-2">
             <div>
               <h2 className="text-ue-teal font-mono mb-2">About Me</h2>
-              <h3 className="text-3xl md:text-4xl font-bold">Passionate Game Developer with a Vision</h3>
+              <h3 className="text-3xl md:text-4xl font-bold">Creative Unreal Engine Developer</h3>
             </div>
             
             <div className="space-y-4 text-muted-foreground">
               <p>
-                I am a dedicated game developer with 5+ years of experience specializing in Unreal Engine 
-                development. My journey in game development began with a fascination for creating immersive 
-                worlds and has evolved into a professional career building high-performance game systems.
+                As an experienced Unreal Engine 5 developer, I specialize in creating immersive gameplay experiences 
+                through custom multiplayer systems, friend systems, and game mechanics that engage players. My expertise 
+                spans both Blueprint visual scripting and C++ implementation, allowing me to find the perfect balance 
+                between rapid prototyping and performance optimization.
               </p>
               <p>
-                My expertise spans both the technical and artistic aspects of game development, from 
-                optimizing rendering pipelines to designing intuitive gameplay mechanics. I'm particularly 
-                passionate about real-time rendering techniques that push the boundaries of visual fidelity 
-                while maintaining performance.
+                I have a particular passion for solving complex networking challenges in multiplayer games, from implementing 
+                efficient replication systems to creating seamless matchmaking solutions. My background includes work on battle 
+                royale mechanics, adventure game progression systems, and RPG dialogue frameworks.
               </p>
               <p>
-                When I'm not coding, I'm exploring new technologies, contributing to open-source projects, 
-                or participating in game jams to sharpen my rapid prototyping skills.
+                I thrive in collaborative environments where technical excellence meets creative gameplay design. Whether 
+                working solo or as part of a team, I'm focused on creating systems that are robust, maintainable, and most 
+                importantly, deliver memorable player experiences.
               </p>
             </div>
             
             <div className="pt-4 flex flex-wrap gap-6">
-              <div>
+              <div className="glass p-4 rounded-lg">
                 <div className="text-3xl font-bold text-ue-blue">15+</div>
                 <div className="text-sm text-muted-foreground">Completed Projects</div>
               </div>
-              <div>
+              <div className="glass p-4 rounded-lg">
                 <div className="text-3xl font-bold text-ue-teal">10+</div>
-                <div className="text-sm text-muted-foreground">Satisfied Clients</div>
+                <div className="text-sm text-muted-foreground">Client Collaborations</div>
               </div>
-              <div>
+              <div className="glass p-4 rounded-lg">
                 <div className="text-3xl font-bold bg-gradient-to-r from-ue-blue to-ue-teal bg-clip-text text-transparent">3+</div>
-                <div className="text-sm text-muted-foreground">AAA Game Credits</div>
+                <div className="text-sm text-muted-foreground">Commercial Games</div>
               </div>
             </div>
             
-            <div className="pt-4">
+            <div className="pt-4 flex items-center gap-4">
               <a 
-                href="#" 
-                className="inline-flex items-center gap-2 text-ue-teal hover:text-ue-blue transition-colors"
-                download
+                href="https://www.linkedin.com/in/rasmis1235/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-muted hover:bg-muted/70 transition-colors"
+                aria-label="LinkedIn Profile"
               >
-                <span>Download Resume</span>
+                <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+              <a 
+                href="#contact"
+                className="inline-flex items-center gap-2 text-ue-teal hover:text-ue-blue transition-colors"
+              >
+                <span>Get In Touch</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
               </a>
             </div>

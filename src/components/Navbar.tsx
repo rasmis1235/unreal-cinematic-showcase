@@ -1,12 +1,15 @@
 
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
+import { useTheme } from './ThemeProvider';
+import ThemeToggle from './ThemeToggle';
 
 const navItems = [
   { name: 'Home', href: '#hero' },
-  { name: 'Projects', href: '#projects' },
   { name: 'About', href: '#about' },
+  { name: 'Projects', href: '#projects' },
   { name: 'Skills', href: '#skills' },
+  { name: 'Experience', href: '#experience' },
   { name: 'Contact', href: '#contact' }
 ];
 
@@ -14,6 +17,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,31 +46,50 @@ const Navbar = () => {
   return (
     <nav 
       className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-300",
-        isScrolled ? "py-2 bg-ue-darkest bg-opacity-90 backdrop-blur-md shadow-md" : "py-5"
+        "fixed top-0 left-0 w-full z-50 transition-all duration-500",
+        isScrolled ? "py-2 glass-navbar shadow-lg backdrop-blur-xl" : "py-5"
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#hero" className="text-2xl font-bold bg-gradient-to-r from-ue-blue to-ue-teal bg-clip-text text-transparent">
-          GameDev<span className="text-ue-teal">Portfolio</span>
+        <a href="#hero" className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-md bg-gradient-to-br from-ue-blue to-ue-teal flex items-center justify-center text-white font-bold text-xl shadow-neon">
+            RS
+          </div>
+          <span className="text-xl font-bold">
+            <span className="bg-gradient-to-r from-ue-blue to-ue-teal bg-clip-text text-transparent">Rasmi</span>
+            <span className="text-foreground">Sahoo</span>
+          </span>
         </a>
         
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-6">
+        <div className="hidden md:flex space-x-6 items-center">
           {navItems.map(item => (
             <a 
               key={item.name}
               href={item.href}
               className={cn(
-                "font-medium text-sm tracking-wide transition-colors duration-200",
+                "font-medium text-sm tracking-wide transition-all duration-200 relative nav-link",
                 activeSection === item.href.substring(1)
                   ? "text-ue-teal"
                   : "text-muted-foreground hover:text-foreground"
               )}
             >
               {item.name}
+              <span className={cn(
+                "absolute -bottom-1 left-0 w-0 h-0.5 bg-ue-teal transition-all duration-300", 
+                activeSection === item.href.substring(1) ? "w-full" : ""
+              )}></span>
             </a>
           ))}
+          
+          {/* Resume Button */}
+          <a 
+            href="#" 
+            className="ml-2 bg-gradient-to-r from-ue-blue to-ue-teal text-white px-4 py-2 rounded-md font-medium shadow-neon hover:shadow-neon-hover transition-all duration-300"
+            download
+          >
+            Resume
+          </a>
         </div>
         
         {/* Mobile Navigation Toggle */}
@@ -85,27 +108,43 @@ const Navbar = () => {
             </svg>
           )}
         </button>
+
+        {/* Theme Toggle (visible on desktop) */}
+        <div className="hidden md:block">
+          <ThemeToggle />
+        </div>
       </div>
       
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-ue-darkest bg-opacity-95 backdrop-blur-md py-4 border-t border-border">
+        <div className="md:hidden absolute top-full left-0 right-0 glass-navbar py-4 border-t border-white/10">
           <div className="container mx-auto px-4 flex flex-col space-y-3">
             {navItems.map(item => (
               <a
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "font-medium py-2 px-4 rounded-md transition-colors duration-200",
+                  "font-medium py-2 px-4 rounded-md transition-colors duration-200 flex items-center",
                   activeSection === item.href.substring(1)
                     ? "bg-muted text-ue-teal"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground"
                 )}
                 onClick={() => setMobileMenuOpen(false)}
               >
+                <span className="mr-2 w-1.5 h-1.5 rounded-full bg-ue-teal opacity-70"></span>
                 {item.name}
               </a>
             ))}
+            
+            {/* Resume Button (Mobile) */}
+            <a 
+              href="#" 
+              className="py-2 px-4 bg-gradient-to-r from-ue-blue to-ue-teal text-white rounded-md font-medium shadow-md"
+              download
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Resume
+            </a>
           </div>
         </div>
       )}
