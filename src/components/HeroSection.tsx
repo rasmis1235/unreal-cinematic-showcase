@@ -54,7 +54,7 @@ const HeroSection = () => {
         titleRef.current.textContent = '';
         setTimeout(() => {
           if (titleRef.current) {
-            typeAnimation(titleRef.current, 'Crafting custom multiplayer worlds', 80);
+            typeAnimation(titleRef.current, 'Crafting scalable multiplayer experiences with creative flair', 80);
           }
         }, 1000);
       }
@@ -115,9 +115,8 @@ const HeroSection = () => {
             </div>
             
             <p className={`text-lg text-muted-foreground max-w-lg transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
-              I specialize in creating custom multiplayer systems, gameplay features, and immersive experiences using 
-              Blueprints and C++. From battle royale mechanics to adventure game progression systems, I build memorable 
-              player experiences that perform beautifully.
+              I specialize in developing robust multiplayer systems and gameplay frameworks for Battle Royale, Adventure, 
+              and F2P games. From custom matchmaking to friend systems, I build comprehensive gaming experiences that scale.
             </p>
             
             <div className={`flex flex-wrap gap-4 pt-4 transition-all duration-1000 delay-500 ${isLoaded ? 'opacity-100' : 'opacity-0 translate-y-10'}`}>
@@ -137,6 +136,13 @@ const HeroSection = () => {
               >
                 Get In Touch
               </a>
+            </div>
+
+            <div className="flex items-center gap-3 pt-2">
+              <span className="text-muted-foreground text-sm">Currently:</span>
+              <span className="px-3 py-1 rounded-full text-xs font-medium bg-ue-teal/20 text-ue-teal">
+                Lead Game Developer at GauravGo Games
+              </span>
             </div>
           </div>
           

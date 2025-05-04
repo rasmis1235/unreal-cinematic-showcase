@@ -56,7 +56,7 @@ const AboutSection = () => {
               <div className="absolute -top-6 -right-6 p-3 rounded-lg bg-gradient-to-br from-ue-blue to-ue-teal shadow-neon">
                 <div className="w-full h-full rounded bg-card flex items-center justify-center p-2">
                   <div className="text-center">
-                    <div className="text-2xl font-bold">5+</div>
+                    <div className="text-2xl font-bold">3+</div>
                     <div className="text-xs text-muted-foreground">Years UE Experience</div>
                   </div>
                 </div>
@@ -68,6 +68,16 @@ const AboutSection = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                   </svg>
                   <span className="text-sm">UE5 Certified Developer</span>
+                </div>
+              </div>
+
+              <div className="absolute top-1/2 right-0 transform translate-x-3 -translate-y-1/2 p-2 rounded-lg bg-card/80 backdrop-blur-sm border border-white/10">
+                <div className="flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-ue-blue">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                  </svg>
+                  <span className="text-sm">Dhenkanal, Odisha</span>
                 </div>
               </div>
             </div>
@@ -82,21 +92,18 @@ const AboutSection = () => {
             
             <div className="space-y-4 text-muted-foreground">
               <p>
-                As an experienced Unreal Engine 5 developer, I specialize in creating immersive gameplay experiences 
-                through custom multiplayer systems, friend systems, and game mechanics that engage players. My expertise 
-                spans both Blueprint visual scripting and C++ implementation, allowing me to find the perfect balance 
-                between rapid prototyping and performance optimization.
+                I'm Rasmi Ranjan Sahoo, an Unreal Engine 5 developer from Dhenkanal, Odisha. With over 3 years of hands-on 
+                experience, I specialize in building robust multiplayer systems and gameplay frameworks using both Blueprints 
+                and C++. I love playing and making games, and nothing excites me more than pushing the boundaries of what 
+                real-time experiences can deliver.
               </p>
               <p>
-                I have a particular passion for solving complex networking challenges in multiplayer games, from implementing 
-                efficient replication systems to creating seamless matchmaking solutions. My background includes work on battle 
-                royale mechanics, adventure game progression systems, and RPG dialogue frameworks.
+                Currently working as Lead Game Developer at GauravGo Games Technologies, I'm known for developing a custom matchmaking system capable 
+                of scaling to massive user loads, and implementing friend systems from scratch for Battle Royale, Adventure, and F2P multiplayer experiences.
               </p>
-              <p>
-                I thrive in collaborative environments where technical excellence meets creative gameplay design. Whether 
-                working solo or as part of a team, I'm focused on creating systems that are robust, maintainable, and most 
-                importantly, deliver memorable player experiences.
-              </p>
+              <blockquote className="border-l-4 border-ue-teal pl-4 py-2 italic mt-6">
+                "I build worlds I'd want to play in — scalable, beautiful, and multiplayer-ready."
+              </blockquote>
             </div>
             
             <div className="pt-4 flex flex-wrap gap-6">
@@ -105,12 +112,12 @@ const AboutSection = () => {
                 <div className="text-sm text-muted-foreground">Completed Projects</div>
               </div>
               <div className="glass p-4 rounded-lg">
-                <div className="text-3xl font-bold text-ue-teal">10+</div>
-                <div className="text-sm text-muted-foreground">Client Collaborations</div>
+                <div className="text-3xl font-bold text-ue-teal">3+</div>
+                <div className="text-sm text-muted-foreground">Years Experience</div>
               </div>
               <div className="glass p-4 rounded-lg">
-                <div className="text-3xl font-bold bg-gradient-to-r from-ue-blue to-ue-teal bg-clip-text text-transparent">3+</div>
-                <div className="text-sm text-muted-foreground">Commercial Games</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-ue-blue to-ue-teal bg-clip-text text-transparent">5+</div>
+                <div className="text-sm text-muted-foreground">Multiplayer Systems</div>
               </div>
             </div>
             

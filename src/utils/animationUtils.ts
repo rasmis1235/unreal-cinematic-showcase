@@ -1,82 +1,57 @@
 
-// Animation utility functions for the portfolio
-
-// Typing animation effect
-export const typeAnimation = (element: HTMLElement, text: string, speed: number = 50): void => {
+// Function to type out text with a typewriter effect
+export const typeAnimation = (element: HTMLElement, text: string, speed: number = 100) => {
   let i = 0;
+  const cursor = document.createElement('span');
+  cursor.classList.add('cursor');
+  cursor.textContent = '';
+  element.appendChild(cursor);
+
   const typing = setInterval(() => {
     if (i < text.length) {
-      element.textContent += text.charAt(i);
+      if (element.childNodes[0]) {
+        element.childNodes[0].textContent += text.charAt(i);
+      } else {
+        const textNode = document.createTextNode(text.charAt(i));
+        element.insertBefore(textNode, cursor);
+      }
       i++;
     } else {
       clearInterval(typing);
+      setTimeout(() => {
+        element.classList.remove('border-r-2');
+      }, 500);
     }
   }, speed);
+
+  return () => clearInterval(typing);
 };
 
-// Parallax effect
-export const initParallax = (): void => {
-  window.addEventListener('mousemove', (e) => {
-    const parallaxElements = document.querySelectorAll('.parallax');
-    const slowerElements = document.querySelectorAll('.parallax-slower');
+// Function to initialize parallax effects
+export const initParallax = () => {
+  document.addEventListener('mousemove', (e) => {
+    const parallaxItems = document.querySelectorAll<HTMLElement>('.parallax');
+    const parallaxSlowItems = document.querySelectorAll<HTMLElement>('.parallax-slower');
+    const parallaxFastItems = document.querySelectorAll<HTMLElement>('.parallax-faster');
     
-    const x = e.clientX / window.innerWidth;
-    const y = e.clientY / window.innerHeight;
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
     
-    parallaxElements.forEach((el) => {
-      const element = el as HTMLElement;
-      const offsetX = (x - 0.5) * 30; // Increased effect
-      const offsetY = (y - 0.5) * 30;
-      element.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0)`;
+    const moveX = (mouseX / windowWidth) - 0.5;
+    const moveY = (mouseY / windowHeight) - 0.5;
+    
+    parallaxItems.forEach(item => {
+      item.style.transform = `translate3d(${moveX * 30}px, ${moveY * 30}px, 0)`;
     });
     
-    slowerElements.forEach((el) => {
-      const element = el as HTMLElement;
-      const offsetX = (x - 0.5) * 15;
-      const offsetY = (y - 0.5) * 15;
-      element.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0)`;
+    parallaxSlowItems.forEach(item => {
+      item.style.transform = `translate3d(${moveX * 15}px, ${moveY * 15}px, 0)`;
+    });
+    
+    parallaxFastItems.forEach(item => {
+      item.style.transform = `translate3d(${moveX * 45}px, ${moveY * 45}px, 0)`;
     });
   });
-};
-
-// Sound effects
-export const playSoundEffect = (soundUrl: string, volume: number = 0.5): void => {
-  const audio = new Audio(soundUrl);
-  audio.volume = volume;
-  audio.play().catch(error => {
-    console.log("Audio play failed:", error);
-  });
-};
-
-// Page transition animations
-export const pageTransition = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.6, 0.05, 0.01, 0.99],
-      staggerChildren: 0.1,
-    }
-  },
-  exit: {
-    opacity: 0,
-    y: -20,
-    transition: {
-      duration: 0.4,
-    }
-  }
-};
-
-export const itemAnimation = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.6, 0.05, 0.01, 0.99],
-    }
-  }
 };

@@ -6,55 +6,72 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 
-// Enhanced project data
+// Enhanced project data with full descriptions and real information
 const projects = [
   {
     id: 1,
     title: "Battle Royale Matchmaker",
     description: "A comprehensive multiplayer matchmaking system with friend invites, party management, and regional server selection. Built as a plugin for Unreal Engine 5.",
-    longDescription: "This project implements a complete matchmaking solution for battle royale games. It handles player queuing, skill-based matchmaking, friend invites and party systems. The system is built as a modular plugin that can be integrated into any UE5 project.",
+    longDescription: "This project implements a complete matchmaking solution for battle royale games. It handles player queuing, skill-based matchmaking, friend invites and party systems. The system is built as a modular plugin that can be integrated into any UE5 project and supports up to 150 concurrent players per match.",
     tags: ["Multiplayer", "Blueprints", "C++"],
     tools: ["Unreal Engine 5", "C++", "Blueprint"],
     type: "Solo",
     image: "/project1.jpg",
     featured: true,
-    videoUrl: "/project1-video.mp4"
+    videoUrl: "/project1-video.mp4",
+    gameType: "Battle Royale"
   },
   {
     id: 2,
     title: "RPG Dialogue & Quest System",
     description: "A branching dialogue and quest tracking system with conditional responses, reputation tracking, and dynamic quest generation.",
-    longDescription: "A complete quest system for RPGs that manages dialogue trees, NPC interactions, and quest progression. The system tracks player choices and adjusts dialogue options based on character reputation, previous interactions, and quest status.",
+    longDescription: "A complete quest system for RPGs that manages dialogue trees, NPC interactions, and quest progression. The system tracks player choices and adjusts dialogue options based on character reputation, previous interactions, and quest status. Features include a visual editor for quest design and runtime quest generation.",
     tags: ["Gameplay", "Systems", "UI"],
     tools: ["Unreal Engine 5", "Blueprint", "Behavior Trees"],
     type: "Team",
     image: "/project2.jpg",
     featured: true,
-    videoUrl: "/project2-video.mp4"
+    videoUrl: "/project2-video.mp4",
+    gameType: "Adventure"
   },
   {
     id: 3,
     title: "Procedural Cave Generator",
     description: "A procedural cave generation system using cellular automata, with runtime mesh generation and optimized LOD management.",
-    longDescription: "This tool generates realistic cave environments that can be configured through an intuitive editor interface. It produces runtime meshes with optimized collision, proper UV mapping for texturing, and LOD systems for performance.",
+    longDescription: "This tool generates realistic cave environments that can be configured through an intuitive editor interface. It produces runtime meshes with optimized collision, proper UV mapping for texturing, and LOD systems for performance. Perfect for adventure games requiring large explorable underground areas.",
     tags: ["Procedural", "Tools", "Optimization"],
     tools: ["Unreal Engine 5", "C++", "Runtime Mesh Component"],
     type: "Solo",
     image: "/project3.jpg",
     featured: false,
-    videoUrl: "/project3-video.mp4"
+    videoUrl: "/project3-video.mp4",
+    gameType: "Adventure"
   },
   {
     id: 4,
     title: "Dynamic Combat System",
     description: "A flexible combat framework supporting melee, ranged and magical abilities with extensive animation integration and VFX.",
-    longDescription: "This combat framework provides a base for action games with combo systems, weapon switching, and diverse attack patterns. It includes hit detection, damage calculation, and tight animation integration using the Gameplay Ability System.",
+    longDescription: "This combat framework provides a base for action games with combo systems, weapon switching, and diverse attack patterns. It includes hit detection, damage calculation, and tight animation integration using the Gameplay Ability System. The system supports multiplayer functionality with proper replication.",
     tags: ["Gameplay", "Animation", "VFX"],
     tools: ["Unreal Engine 5", "Gameplay Ability System", "Blueprint"],
     type: "Team",
     image: "/project4.jpg",
     featured: false,
-    videoUrl: "/project4-video.mp4"
+    videoUrl: "/project4-video.mp4",
+    gameType: "F2P"
+  },
+  {
+    id: 5,
+    title: "Friend System & Social Hub",
+    description: "A complete friend management system with invites, presence updates, and social features for multiplayer games.",
+    longDescription: "This social framework enables players to connect, add friends, view online status, and join each other's games. It includes real-time presence updates, friend requests, and a notification system. The social hub provides an interface for players to manage their connections and communicate within the game.",
+    tags: ["Multiplayer", "UI/UX", "Social"],
+    tools: ["Unreal Engine 5", "C++", "UMG"],
+    type: "Solo",
+    image: "/project5.jpg", 
+    featured: true,
+    videoUrl: "/project5-video.mp4",
+    gameType: "F2P"
   },
 ];
 
@@ -88,6 +105,11 @@ const ProjectCard = ({ project, className, onClick }: ProjectCardProps) => {
           project.type === "Solo" ? "badge-solo" : "badge-team"
         )}>
           {project.type}
+        </div>
+        
+        {/* Game Type Badge */}
+        <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-xs font-medium bg-ue-blue/20 text-ue-blue backdrop-blur-sm z-20">
+          {project.gameType}
         </div>
         
         {/* Play Button Overlay */}
@@ -159,6 +181,12 @@ const ProjectsSection = () => {
 
   const filteredProjects = activeTab === "featured" 
     ? projects.filter(p => p.featured) 
+    : activeTab === "battle-royale"
+    ? projects.filter(p => p.gameType === "Battle Royale")
+    : activeTab === "adventure"
+    ? projects.filter(p => p.gameType === "Adventure")
+    : activeTab === "f2p"
+    ? projects.filter(p => p.gameType === "F2P")
     : projects;
 
   return (
@@ -177,7 +205,7 @@ const ProjectsSection = () => {
         </div>
         
         <Tabs defaultValue="all" className="w-full">
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-8 overflow-x-auto pb-2">
             <TabsList className="bg-muted backdrop-blur-sm">
               <TabsTrigger 
                 value="all" 
@@ -192,6 +220,27 @@ const ProjectsSection = () => {
                 className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-ue-blue data-[state=active]:to-ue-teal data-[state=active]:text-white"
               >
                 Featured
+              </TabsTrigger>
+              <TabsTrigger 
+                value="battle-royale" 
+                onClick={() => setActiveTab("battle-royale")}
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-ue-blue data-[state=active]:to-ue-teal data-[state=active]:text-white"
+              >
+                Battle Royale
+              </TabsTrigger>
+              <TabsTrigger 
+                value="adventure" 
+                onClick={() => setActiveTab("adventure")}
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-ue-blue data-[state=active]:to-ue-teal data-[state=active]:text-white"
+              >
+                Adventure
+              </TabsTrigger>
+              <TabsTrigger 
+                value="f2p" 
+                onClick={() => setActiveTab("f2p")}
+                className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-ue-blue data-[state=active]:to-ue-teal data-[state=active]:text-white"
+              >
+                F2P
               </TabsTrigger>
             </TabsList>
           </div>
@@ -219,6 +268,42 @@ const ProjectsSection = () => {
               ))}
             </div>
           </TabsContent>
+          
+          <TabsContent value="battle-royale" className="mt-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredProjects.map(project => (
+                <ProjectCard 
+                  key={project.id} 
+                  project={project}
+                  onClick={() => setSelectedProject(project)}
+                />
+              ))}
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="adventure" className="mt-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredProjects.map(project => (
+                <ProjectCard 
+                  key={project.id} 
+                  project={project}
+                  onClick={() => setSelectedProject(project)}
+                />
+              ))}
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="f2p" className="mt-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredProjects.map(project => (
+                <ProjectCard 
+                  key={project.id} 
+                  project={project}
+                  onClick={() => setSelectedProject(project)}
+                />
+              ))}
+            </div>
+          </TabsContent>
         </Tabs>
       </div>
 
@@ -230,12 +315,17 @@ const ProjectsSection = () => {
               <DialogHeader>
                 <div className="flex items-center justify-between">
                   <DialogTitle className="text-2xl">{selectedProject.title}</DialogTitle>
-                  <span className={cn(
-                    "badge",
-                    selectedProject.type === "Solo" ? "badge-solo" : "badge-team"
-                  )}>
-                    {selectedProject.type} Project
-                  </span>
+                  <div className="flex gap-2">
+                    <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-ue-blue/20 text-ue-blue">
+                      {selectedProject.gameType}
+                    </span>
+                    <span className={cn(
+                      "badge",
+                      selectedProject.type === "Solo" ? "badge-solo" : "badge-team"
+                    )}>
+                      {selectedProject.type} Project
+                    </span>
+                  </div>
                 </div>
                 <DialogDescription>
                   {selectedProject.description}

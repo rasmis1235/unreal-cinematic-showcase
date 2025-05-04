@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-8 md:mb-0">
             <a href="#hero" className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-md bg-gradient-to-br from-ue-blue to-ue-teal flex items-center justify-center text-white font-bold text-sm">
+              <div className="w-10 h-10 rounded-md bg-gradient-to-br from-ue-blue to-ue-teal flex items-center justify-center text-white font-bold text-sm">
                 RS
               </div>
               <span className="text-xl font-bold">
@@ -24,7 +24,7 @@ const Footer = () => {
               </span>
             </a>
             <p className="text-sm text-muted-foreground mt-2 max-w-xs">
-              Unreal Engine 5 Developer specializing in multiplayer systems and gameplay mechanics
+              Unreal Engine 5 Developer from Dhenkanal, Odisha. Specializing in multiplayer systems and gameplay mechanics.
             </p>
           </div>
           
@@ -35,6 +35,8 @@ const Footer = () => {
                 <li><a href="#hero" className="text-muted-foreground hover:text-ue-teal transition-colors">Home</a></li>
                 <li><a href="#about" className="text-muted-foreground hover:text-ue-teal transition-colors">About</a></li>
                 <li><a href="#projects" className="text-muted-foreground hover:text-ue-teal transition-colors">Projects</a></li>
+                <li><a href="#skills" className="text-muted-foreground hover:text-ue-teal transition-colors">Skills</a></li>
+                <li><a href="#experience" className="text-muted-foreground hover:text-ue-teal transition-colors">Experience</a></li>
                 <li><a href="#contact" className="text-muted-foreground hover:text-ue-teal transition-colors">Contact</a></li>
               </ul>
             </div>
@@ -56,6 +58,24 @@ const Footer = () => {
                 <li><a href="#" className="text-muted-foreground hover:text-ue-blue transition-colors">Discord</a></li>
                 <li><a href="#" className="text-muted-foreground hover:text-ue-blue transition-colors">Twitter</a></li>
               </ul>
+            </div>
+            
+            <div className="text-center md:text-left col-span-2 md:col-span-1">
+              <h3 className="text-sm font-semibold mb-3 text-ue-teal">Location</h3>
+              <p className="text-sm text-muted-foreground">
+                Dhenkanal, Odisha<br />
+                India
+              </p>
+              <a 
+                href="/resume.pdf" 
+                download
+                className="inline-flex items-center gap-2 mt-4 text-sm text-ue-blue hover:text-ue-teal transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download CV
+              </a>
             </div>
           </div>
         </div>

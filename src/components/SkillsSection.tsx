@@ -40,7 +40,7 @@ const tools = [
   { name: "Perforce", icon: "perforce.png" },
   { name: "Git", icon: "git.png" },
   { name: "Blender", icon: "blender.png" },
-  { name: "Substance Designer", icon: "substance.png" }
+  { name: "Substance", icon: "substance.png" }
 ];
 
 // Soft Skills
@@ -51,6 +51,13 @@ const softSkills = [
   "Performance Optimization", 
   "Team Collaboration",
   "System Architecture"
+];
+
+// Additional Technologies
+const additionalTech = [
+  "C#", "Python", "Java", "JavaScript", 
+  "Node.js", "MySQL", "HTML", 
+  "AWS", "Azure", "Windows Server"
 ];
 
 interface SkillBarProps {
@@ -193,9 +200,23 @@ const SkillsSection = () => {
                 </div>
               ))}
             </div>
+            
+            <div className="mt-8">
+              <h4 className="font-semibold mb-3 text-ue-blue">Additional Technologies</h4>
+              <div className="flex flex-wrap gap-2">
+                {additionalTech.map(tech => (
+                  <span 
+                    key={tech}
+                    className="px-3 py-1 bg-muted/30 rounded-full text-xs"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
           
-          {/* Soft Skills */}
+          {/* Professional Skills */}
           <div className="glass p-7 rounded-lg">
             <h3 className="text-2xl font-bold mb-6 text-center">Professional Skills</h3>
             
@@ -211,12 +232,51 @@ const SkillsSection = () => {
             </div>
             
             <div className="mt-6 p-5 bg-muted/50 rounded-lg border border-white/5">
-              <h4 className="font-semibold mb-2 text-ue-teal">Game Development Philosophy</h4>
-              <p className="text-muted-foreground text-sm">
-                I believe in creating systems that are modular, well-documented, and performance-optimized. 
-                My approach combines technical excellence with player-focused design to build mechanics 
-                that not only work flawlessly but also create meaningful game experiences.
-              </p>
+              <h4 className="font-semibold mb-2 text-ue-teal">Industry Knowledge</h4>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-ue-teal mt-1">•</span>
+                  <span className="text-sm">Multiplayer Matchmaking Systems</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-ue-teal mt-1">•</span>
+                  <span className="text-sm">Game Architecture & Optimization</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-ue-teal mt-1">•</span>
+                  <span className="text-sm">Gameplay Programming & Loop Design</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-ue-teal mt-1">•</span>
+                  <span className="text-sm">Communication Systems</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-ue-teal mt-1">•</span>
+                  <span className="text-sm">Problem Solving under Production Constraints</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="mt-6 p-5 bg-muted/50 rounded-lg border border-white/5">
+              <h4 className="font-semibold mb-2 text-ue-teal">Interpersonal Skills</h4>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-ue-teal mt-1">•</span>
+                  <span className="text-sm">Team Collaboration & Communication</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-ue-teal mt-1">•</span>
+                  <span className="text-sm">Mentorship (Lead Role Experience)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-ue-teal mt-1">•</span>
+                  <span className="text-sm">Creative Thinking</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-ue-teal mt-1">•</span>
+                  <span className="text-sm">Agile & Remote Work Culture Adaptability</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
