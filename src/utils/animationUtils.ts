@@ -55,3 +55,19 @@ export const initParallax = () => {
     });
   });
 };
+
+// Function to play sound effects
+export const playSoundEffect = (soundPath: string, volume: number = 0.5) => {
+  try {
+    const audio = new Audio(soundPath);
+    audio.volume = volume;
+    audio.play().catch(error => {
+      console.warn('Sound effect could not be played:', error);
+    });
+    
+    return audio;
+  } catch (error) {
+    console.warn('Error playing sound effect:', error);
+    return null;
+  }
+};
