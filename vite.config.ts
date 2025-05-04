@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  base: mode === 'production' ? '/{repo-name}/' : '/', // Replace {repo-name} with your actual repository name
+  base: mode === 'production' ? '/unreal-cinematic-showcase/' : '/', // Replace {repo-name} with your actual repository name
   plugins: [
     react(),
     mode === 'development' &&
